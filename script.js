@@ -17,6 +17,10 @@ function calcBtnClicked(e) {
     if (btnID == "=") {
         solve();
         return;
+    } else if (btnID == "c") {
+        currentInput = "";
+        updateInput();
+        return;
     }
 
     let symbol = isSymbol(btnID);
