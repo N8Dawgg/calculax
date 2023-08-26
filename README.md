@@ -1,2 +1,4 @@
 # calculax
 The manifestation of my alter-ego Calculax (It's a calculator).
+
+This is a simple calculator I made for the Odin Project. I am relatively proud of it. The main technique I used in it's creation that I am most proud of is that I created an Array of mathematical functions which was arranged in the mathematical order of operations, and then looped through the function list in order to complete all of the math at the end. This allowed me to not have to duplicate so much code, and sets the system up for exponential and other mathematical functionality in the future if I wanted to add it. Unfortunately, time is money and I need to move on to the next learning exercise...
