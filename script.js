@@ -48,8 +48,12 @@ function updateInput() {
 
 function solve() {
     currentInput = cleanUp(currentInput);
+    //mdas
+    let storedInput = currentInput;
     updateInput();
 };
+
+
 
 function cleanUp(str) {
     let newStr = "";
@@ -73,10 +77,46 @@ function cleanUp(str) {
             newStr += str[i];
         }
     }
+    newStr = clipSymbolsOffEnd(newStr);
     return newStr;
+}
+
+function clipSymbolsOffEnd(str) {
+    while(true) {
+        let lastChar = str[str.length-1];
+        if (isSymbol(lastChar)) {
+            str = str.substring(0,str.length-1);
+        } else {
+            return str;
+        }
+    }
 }
 
 
 
+function add(a,b) {
+    return a+b;
+}
+
+function sub(a,b) {
+    return a-b;
+}
+
+function multi(a,b) {
+    return a*b;
+}
+
+function divide(a,b) {
+    return a/b;
+}
+
+
+function isSymbol(char) {
+    return (char == "/" ||
+    char == "+" ||
+    char == "-" ||
+    char == "*" ||
+    char == ".");
+}
 
 
