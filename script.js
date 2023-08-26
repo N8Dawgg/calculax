@@ -38,6 +38,9 @@ function updateInput() {
     inputField.value = currentInput;
 }
 
+let mathFunction = [multi,divide,add,sub];
+let mathSymbol = ["*","/","+","-"];
+
 function solve() {
     currentInput = cleanUp(currentInput);
     //mdas
@@ -46,11 +49,25 @@ function solve() {
     currentInput = currentInput.replace("-",",-,");
     currentInput = currentInput.replace("/",",/,");
     currentInput = currentInput.replace("*",",*,");
-    let inputList = currentInput.slice(',');
-    console.log(inputList);
+    let inputList = currentInput.split(',');
+    //for each mathematic property:
+    for (let i=0; i<4; i++) {
+        let curIdx = 0;
+        while (curIdx != -1) {
+            curIdx = inputList.indexOf(mathSymbol[i]);
+            if (curIdx != -1) {
+                let a = parseFloat(inputList[curIdx-1]);
+                let b = parseFloat(inputList[curIdx+1]);
+                inputList[curIdx-1] = mathFunction[i](a,b);
+                inputList.splice(curIdx,2);
+            }
+        }
+    }
+    currentInput = inputList[0].toString();
+
+
     updateInput();
 };
-
 
 
 function cleanUp(str) {
