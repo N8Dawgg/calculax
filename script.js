@@ -19,17 +19,9 @@ function calcBtnClicked(e) {
         return;
     }
 
-    let symbol = (btnID == "/" ||
-    btnID == "+" ||
-    btnID == "-" ||
-    btnID == "*" ||
-    btnID == ".");
+    let symbol = isSymbol(btnID);
     let lastChar = currentInput[currentInput.length-1];
-    let lastSymbol = (lastChar == "/" ||
-    lastChar == "+" ||
-    lastChar == "-" ||
-    lastChar == "*" ||
-    lastChar == ".");
+    let lastSymbol = isSymbol(lastChar);
 
     if (symbol && currentInput.length == 0) {
         currentInput += "0"
@@ -50,6 +42,12 @@ function solve() {
     currentInput = cleanUp(currentInput);
     //mdas
     let storedInput = currentInput;
+    currentInput = currentInput.replace("+",",+,");
+    currentInput = currentInput.replace("-",",-,");
+    currentInput = currentInput.replace("/",",/,");
+    currentInput = currentInput.replace("*",",*,");
+    let inputList = currentInput.slice(',');
+    console.log(inputList);
     updateInput();
 };
 
